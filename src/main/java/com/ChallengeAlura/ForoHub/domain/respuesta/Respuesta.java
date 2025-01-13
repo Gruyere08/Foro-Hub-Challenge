@@ -4,8 +4,6 @@ package com.ChallengeAlura.ForoHub.domain.respuesta;
 import com.ChallengeAlura.ForoHub.domain.topico.Topico;
 import com.ChallengeAlura.ForoHub.domain.usuario.Usuario;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -25,15 +23,13 @@ public class Respuesta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     private String mensaje;
 
     @ManyToOne
     @JoinColumn(name = "topico_id")
     private Topico topico;
 
-    @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
+
     private Date fechaCreacion;
 
     @ManyToOne

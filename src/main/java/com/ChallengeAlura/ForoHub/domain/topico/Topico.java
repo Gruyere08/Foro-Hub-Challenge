@@ -1,10 +1,9 @@
 package com.ChallengeAlura.ForoHub.domain.topico;
 
 import com.ChallengeAlura.ForoHub.domain.respuesta.Respuesta;
+import com.ChallengeAlura.ForoHub.domain.status.Status;
 import com.ChallengeAlura.ForoHub.domain.usuario.Usuario;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -25,18 +24,18 @@ public class Topico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+
     private String titulo;
 
-    @NotBlank
+
     private String mensaje;
 
-    @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
+
     private Date fechaCreacion;
 
-    @NotBlank
-    private String status;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @ManyToOne
     @JoinColumn(name = "autor_id")
