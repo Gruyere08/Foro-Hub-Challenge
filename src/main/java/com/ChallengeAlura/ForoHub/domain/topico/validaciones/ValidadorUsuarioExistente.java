@@ -1,0 +1,22 @@
+package com.ChallengeAlura.ForoHub.domain.topico.validaciones;
+
+
+import com.ChallengeAlura.ForoHub.domain.ValidacionException;
+import com.ChallengeAlura.ForoHub.domain.topico.DatosRegistroTopico;
+import com.ChallengeAlura.ForoHub.domain.usuario.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ValidadorUsuarioExistente implements ValidadorDeTopicos {
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Override
+    public void validar(DatosRegistroTopico datos) {
+        if (!usuarioRepository.existsById(datos.autorId())){
+            throw new ValidacionException("El usuario que se desea acceder no existe");
+        }
+    }
+}
