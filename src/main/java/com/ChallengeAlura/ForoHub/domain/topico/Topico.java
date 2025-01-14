@@ -9,6 +9,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -42,7 +43,19 @@ public class Topico {
     private Usuario autor;
 
     @OneToMany(mappedBy = "topico")
-    private List<Respuesta> respuestas;
+    private List<Respuesta> respuestas = new ArrayList<>();
+
+
+    public Topico(DatosRegistroTopico datos, Usuario autor){
+        this.titulo = datos.titulo();
+        this.mensaje = datos.mensaje();
+        this.fechaCreacion = datos.fechaCreacion();
+        this.status = datos.status();
+        this.autor = autor;
+        autor.addTopico(this);
+    }
+
+
 
 
 }

@@ -21,10 +21,8 @@ public class TopicoController {
     @PostMapping
     @Transactional
     public ResponseEntity registrarTopico(@RequestBody @Valid DatosRegistroTopico datosRegistroTopico){
-
-
-
-        return ResponseEntity.ok("");
+        var detalleTopico = registro.registrarTopico(datosRegistroTopico);
+        return ResponseEntity.ok(detalleTopico);
     }
 
 }
