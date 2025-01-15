@@ -1,9 +1,6 @@
 package com.ChallengeAlura.ForoHub.Controller;
 
-import com.ChallengeAlura.ForoHub.domain.topico.DatosListadoTopico;
-import com.ChallengeAlura.ForoHub.domain.topico.DatosRegistroTopico;
-import com.ChallengeAlura.ForoHub.domain.topico.RegistroDeTopicos;
-import com.ChallengeAlura.ForoHub.domain.topico.TopicoRepository;
+import com.ChallengeAlura.ForoHub.domain.topico.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -37,6 +34,12 @@ public class TopicoController {
         return ResponseEntity.ok(topicoRepository.findAll(pageable).map(DatosListadoTopico::new));
     }
 
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DatosRespuestaTopico> retornarDatosTopico(@PathVariable Long id){
+
+    }
 
 
 

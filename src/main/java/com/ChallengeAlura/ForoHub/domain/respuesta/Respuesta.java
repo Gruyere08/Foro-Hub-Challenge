@@ -1,22 +1,14 @@
 package com.ChallengeAlura.ForoHub.domain.respuesta;
 
-
 import com.ChallengeAlura.ForoHub.domain.topico.Topico;
 import com.ChallengeAlura.ForoHub.domain.usuario.Usuario;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.Objects;
 
 @Entity(name = "Respuesta")
 @Table(name = "respuestas")
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(of = "id")
 public class Respuesta {
 
     @Id
@@ -29,7 +21,6 @@ public class Respuesta {
     @JoinColumn(name = "topico_id")
     private Topico topico;
 
-
     private Date fechaCreacion;
 
     @ManyToOne
@@ -38,6 +29,77 @@ public class Respuesta {
 
     private Boolean solucion = false;
 
-    // Getters and Setters
+    public Respuesta() {
+    }
+
+    public Respuesta(Long id, String mensaje, Topico topico, Date fechaCreacion, Usuario autor, Boolean solucion) {
+        this.id = id;
+        this.mensaje = mensaje;
+        this.topico = topico;
+        this.fechaCreacion = fechaCreacion;
+        this.autor = autor;
+        this.solucion = solucion;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public Topico getTopico() {
+        return topico;
+    }
+
+    public void setTopico(Topico topico) {
+        this.topico = topico;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Usuario getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Usuario autor) {
+        this.autor = autor;
+    }
+
+    public Boolean getSolucion() {
+        return solucion;
+    }
+
+    public void setSolucion(Boolean solucion) {
+        this.solucion = solucion;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Respuesta respuesta = (Respuesta) o;
+        return Objects.equals(id, respuesta.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
 
