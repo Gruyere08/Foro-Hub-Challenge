@@ -5,6 +5,7 @@ import com.ChallengeAlura.ForoHub.domain.status.Status;
 import java.util.Date;
 
 public record DatosListadoTopico(
+        Long id,
         String titulo,
         String mensaje,
         Date fechaCreacion,
@@ -13,6 +14,7 @@ public record DatosListadoTopico(
 ) {
     public DatosListadoTopico(Topico topico) {
         this(
+                topico.getId(),
                 topico.getTitulo(),
                 topico.getMensaje(),
                 topico.getFechaCreacion(),
