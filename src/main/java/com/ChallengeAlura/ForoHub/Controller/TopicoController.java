@@ -10,6 +10,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+
 
 @RestController
 @RequestMapping("/topicos")
@@ -26,10 +28,12 @@ public class TopicoController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity registrarTopico(@RequestBody @Valid DatosRegistroTopico datosRegistroTopico){
+    public ResponseEntity registrarTopico(@RequestBody @Valid DatosRegistroTopico datosRegistroTopico) {
         var detalleTopico = registro.registrarTopico(datosRegistroTopico);
-        return ResponseEntity.ok(detalleTopico);
+        URI location = URI.create(String.format("/topicos/%d", detalleTopico.id()));
+        return ResponseEntity.created(location).body(detalleTopico);
     }
+
 
 
     @GetMapping
@@ -53,6 +57,7 @@ public class TopicoController {
 
 
     @DeleteMapping("/{id}")
+    @Transactional
     public ResponseEntity<DatosRespuestaTopico> eliminarTopico(@PathVariable Long id){
         Topico topico = topicoRepository.getReferenceById(id);
         topicoRepository.delete(topico);
