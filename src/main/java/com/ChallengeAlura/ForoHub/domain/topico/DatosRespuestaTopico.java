@@ -21,7 +21,7 @@ public record DatosRespuestaTopico(
                 topico.getFechaCreacion(),
                 topico.getStatus(),
                 topico.getAutor().getId(),
-                topico.getAutor().getNombre()
+                topico.getAutor().getLogin()
         );
     }
 }

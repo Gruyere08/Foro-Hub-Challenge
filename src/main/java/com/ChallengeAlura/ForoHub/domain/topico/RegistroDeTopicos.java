@@ -29,7 +29,7 @@ public class RegistroDeTopicos {
 
         Topico topico = new Topico(datos, autor);
         topicoRepository.save(topico);
-        return new DatosDetalleTopico(datos.titulo(), datos.mensaje(), autor.getNombre());
+        return new DatosDetalleTopico(datos.titulo(), datos.mensaje(), autor.getLogin());
     }
 
 }

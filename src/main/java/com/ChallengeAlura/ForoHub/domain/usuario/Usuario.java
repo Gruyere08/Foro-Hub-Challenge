@@ -3,24 +3,28 @@ package com.ChallengeAlura.ForoHub.domain.usuario;
 import com.ChallengeAlura.ForoHub.domain.respuesta.Respuesta;
 import com.ChallengeAlura.ForoHub.domain.topico.Topico;
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
 @Entity(name = "Usuario")
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre;
+    private String login;
 
     private String correoElectronico;
 
-    private String contrasena;
+    private String clave;
 
     @OneToMany(mappedBy = "autor")
     private List<Topico> topicos = new ArrayList<>();
@@ -33,9 +37,9 @@ public class Usuario {
 
     public Usuario(Long id, String nombre, String correoElectronico, String contrasena, List<Topico> topicos, List<Respuesta> respuestas) {
         this.id = id;
-        this.nombre = nombre;
+        this.login = nombre;
         this.correoElectronico = correoElectronico;
-        this.contrasena = contrasena;
+        this.clave = contrasena;
         this.topicos = topicos;
         this.respuestas = respuestas;
     }
@@ -44,16 +48,16 @@ public class Usuario {
         return id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getLogin() {
+        return login;
     }
 
     public String getCorreoElectronico() {
         return correoElectronico;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getClave() {
+        return clave;
     }
 
     public List<Topico> getTopicos() {
@@ -68,16 +72,16 @@ public class Usuario {
         this.id = id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
     public void setTopicos(List<Topico> topicos) {
@@ -110,6 +114,48 @@ public class Usuario {
     public void addRespuesta(Respuesta respuesta) {
         this.respuestas.add(respuesta);
     }
+
+    // SPRING SECURITY
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public String getPassword() {
+        return clave;
+    }
+
+    @Override
+    public String getUsername() {
+        return login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+
+
+
 }
 
 
