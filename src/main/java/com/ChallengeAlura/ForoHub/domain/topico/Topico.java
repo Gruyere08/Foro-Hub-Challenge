@@ -64,9 +64,28 @@ public class Topico {
     public Status getStatus() { return status; }
     public void setStatus(Status status) { this.status = status; }
     public Usuario getAutor() { return autor; }
-    public void setAutor(Usuario autor) { this.autor = autor; }
+    public void setAutor(Usuario autor) { this.autor = autor; autor.addTopico(this);}
     public List<Respuesta> getRespuestas() { return respuestas; }
     public void setRespuestas(List<Respuesta> respuestas) { this.respuestas = respuestas; }
+
+
+    public void actualizarDatos(DatosActualizacionTopico datos){
+        if (datos.titulo() != null) {
+            this.titulo = datos.titulo();
+        }
+        if (datos.mensaje() != null) {
+            this.mensaje = datos.mensaje();
+        }
+        if (datos.fechaCreacion() != null) {
+            this.fechaCreacion = datos.fechaCreacion();
+        }
+        if (datos.status() != null) {
+            this.status = datos.status();
+        }
+    }
+
+
+
 
     // equals and hashCode
     @Override

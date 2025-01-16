@@ -1,6 +1,5 @@
 package com.ChallengeAlura.ForoHub.domain.topico;
 
-
 import com.ChallengeAlura.ForoHub.domain.topico.validaciones.ValidadorDeTopicos;
 import com.ChallengeAlura.ForoHub.domain.usuario.Usuario;
 import com.ChallengeAlura.ForoHub.domain.usuario.UsuarioRepository;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RegistroDeTopicos {
+public class ActualizacionDeTopicos {
 
     @Autowired
     private TopicoRepository topicoRepository;
@@ -21,15 +20,19 @@ public class RegistroDeTopicos {
     @Autowired
     private List<ValidadorDeTopicos> validadores;
 
-    public DatosDetalleTopico registrarTopico(DatosRegistroTopico datos){
+    public DatosRespuestaTopico actualizarTopico(DatosActualizacionTopico datos, Long topicoID){
 
-        validadores.forEach(v -> v.validarRegistro(datos));
+        validadores.forEach(v -> v.validarActualizacion(datos));
+        Topico topico = topicoRepository.getReferenceById(topicoID);
+        if (datos.autorId() != null){
+            Usuario autor = usuarioRepository.getReferenceById(datos.autorId());
+            topico.setAutor(autor);
+        }
+        topico.actualizarDatos(datos);
 
-        Usuario autor = usuarioRepository.getReferenceById(datos.autorId());
-
-        Topico topico = new Topico(datos, autor);
         topicoRepository.save(topico);
-        return new DatosDetalleTopico(datos.titulo(), datos.mensaje(), autor.getNombre());
+
+        return new DatosRespuestaTopico(topico);
     }
 
 }

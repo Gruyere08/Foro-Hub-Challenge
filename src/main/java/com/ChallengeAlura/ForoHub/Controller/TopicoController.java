@@ -21,6 +21,9 @@ public class TopicoController {
     @Autowired
     private TopicoRepository topicoRepository;
 
+    @Autowired
+    private ActualizacionDeTopicos actualizacionDeTopicos;
+
     @PostMapping
     @Transactional
     public ResponseEntity registrarTopico(@RequestBody @Valid DatosRegistroTopico datosRegistroTopico){
@@ -35,10 +38,17 @@ public class TopicoController {
     }
 
 
-
     @GetMapping("/{id}")
     public ResponseEntity<DatosRespuestaTopico> retornarDatosTopico(@PathVariable Long id){
+        Topico topico = topicoRepository.getReferenceById(id);
+        return ResponseEntity.ok(new DatosRespuestaTopico(topico));
+    }
 
+
+    @PutMapping("/{id}")
+    public ResponseEntity<DatosRespuestaTopico> actualizarTopico(@PathVariable Long id, @RequestBody DatosActualizacionTopico datos){
+        var topico = actualizacionDeTopicos.actualizarTopico(datos, id);
+        return ResponseEntity.ok(topico);
     }
 
 
