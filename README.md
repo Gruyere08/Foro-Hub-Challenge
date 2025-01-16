@@ -1,24 +1,25 @@
-# Foro Hub API
+# 🚀 Foro Hub API
 
-## Descripción
-Este proyecto es un desafio que forma parte del programa Oracle Next Education, consiste en la creación de una API destinada a una aplicación de tipo Foro.
+## 📝 Descripción
+Este proyecto es un desafío que forma parte del programa **Oracle Next Education**. Consiste en la creación de una API destinada a una aplicación de tipo **Foro**.
 
-## Tecnologías utilizadas
-- **Lenguaje**: Java
-- **Framework**: Spring Framework
-- **Base de datos**: PostgreSQL
-- **Autenticación**: JWToken, bearer key
-- Otros: IntelliJ
+## 🛠️ Tecnologías utilizadas
+- **Lenguaje**: Java ☕
+- **Framework**: Spring Framework 🌱
+- **Base de datos**: PostgreSQL 🐘
+- **Autenticación**: JWToken, Bearer Key 🔑
+- **Otros**: IntelliJ IDEA 💻
 
+---
 
-## Uso y Endpoints
+## 📖 Uso y Endpoints
 
-### Autenticación
-#### POST /login
+### 🔒 Autenticación
+#### `POST /login`
 
-![image](https://github.com/user-attachments/assets/28aed387-5406-4366-baa5-d3bd5eaf0b00)
+![🔑](https://github.com/user-attachments/assets/28aed387-5406-4366-baa5-d3bd5eaf0b00)
 
-**Descripción:** El endpoint /login permite autenticarlos a los usuarios registrados en la base de datos.
+**Descripción:** Permite a los usuarios registrados autenticarse en la base de datos.
 
 - **Request Body:**
   ```json
@@ -34,14 +35,19 @@ Este proyecto es un desafio que forma parte del programa Oracle Next Education, 
   }
   ```
 
-### Operaciones sobre tópicos
+---
 
-#### POST /topicos
+### 🗂️ Operaciones sobre tópicos
 
-![image](https://github.com/user-attachments/assets/c2d4d7d1-8e9e-4313-a9fe-3ac2e94cd700)
+#### ➕ `POST /topicos`
+
+![📋](https://github.com/user-attachments/assets/c2d4d7d1-8e9e-4313-a9fe-3ac2e94cd700)
 
 **Descripción:** Registra un nuevo tópico.
-**Restricciones:** El tópico registrado no puede ser igual a uno existente (mismo titulo y mensaje), ademas el ID del autor debe ser una Id de usuario válida.
+
+**Restricciones:**
+- El tópico registrado no puede ser igual a uno existente (mismo título y mensaje).
+- El `autorId` debe ser una ID de usuario válida.
 
 - **Request Body:**
   ```json
@@ -63,9 +69,11 @@ Este proyecto es un desafio que forma parte del programa Oracle Next Education, 
   }
   ```
 
-#### GET /topicos
+---
 
-![image](https://github.com/user-attachments/assets/ea271d48-9d51-46af-918f-a7953da0a132)
+#### 📋 `GET /topicos`
+
+![📜](https://github.com/user-attachments/assets/ea271d48-9d51-46af-918f-a7953da0a132)
 
 **Descripción:** Obtiene todos los tópicos registrados.
 
@@ -83,9 +91,11 @@ Este proyecto es un desafio que forma parte del programa Oracle Next Education, 
   ]
   ```
 
-#### GET /topicos/{id}
+---
 
-![image](https://github.com/user-attachments/assets/bdca6db6-aa35-4311-8bb9-fbc5c7f81937)
+#### 🔍 `GET /topicos/{id}`
+
+![🔎](https://github.com/user-attachments/assets/bdca6db6-aa35-4311-8bb9-fbc5c7f81937)
 
 **Descripción:** Obtiene un tópico específico por su ID.
 
@@ -101,12 +111,17 @@ Este proyecto es un desafio que forma parte del programa Oracle Next Education, 
   }
   ```
 
-#### PUT /topicos/{id}
+---
 
-![image](https://github.com/user-attachments/assets/ddba8b87-f218-4553-9b3e-791420ad9820)
+#### ✏️ `PUT /topicos/{id}`
 
-**Descripción:** Actualiza un tópico existente, todos los campos son opcionales.
-**Restricciones:** El tópico actualizado no puede ser igual a uno existente (mismo titulo y mensaje), ademas el ID del autor debe ser una Id de usuario válida.
+![🛠️](https://github.com/user-attachments/assets/ddba8b87-f218-4553-9b3e-791420ad9820)
+
+**Descripción:** Actualiza un tópico existente. Todos los campos son opcionales.
+
+**Restricciones:**
+- El tópico actualizado no puede ser igual a uno existente (mismo título y mensaje).
+- El `autorId` debe ser una ID de usuario válida.
 
 - **Request Body:**
   ```json
@@ -130,9 +145,11 @@ Este proyecto es un desafio que forma parte del programa Oracle Next Education, 
   }
   ```
 
-#### DELETE /topicos/{id}
+---
 
-![image](https://github.com/user-attachments/assets/565073b4-e566-484d-ab39-1dcc41d44de3)
+#### 🗑️ `DELETE /topicos/{id}`
+
+![❌](https://github.com/user-attachments/assets/565073b4-e566-484d-ab39-1dcc41d44de3)
 
 **Descripción:** Elimina un tópico por su ID.
 
@@ -141,15 +158,4 @@ Este proyecto es un desafio que forma parte del programa Oracle Next Education, 
   Sin respuesta
   ```
 
-## Errores comunes
-Enumera posibles errores que los usuarios puedan encontrar al usar la API, junto con sus códigos de estado HTTP y mensajes relevantes.
-
-## Contribución
-Explica cómo otros desarrolladores pueden contribuir al proyecto.
-
-## Licencia
-Indica la licencia bajo la cual se distribuye el proyecto.
-
----
-© [Tu Nombre o Nombre de la Organización], [Año].
 
