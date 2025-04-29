@@ -8,7 +8,7 @@ Este proyecto es un desafío que forma parte del programa **Oracle Next Educatio
 - **Framework**: Spring Framework, Maven 🌱
 - **Base de datos**: PostgreSQL 🐘
 - **Autenticación**: JWToken, Bearer Key (Stateless) 🔑
-- **Otros**: IntelliJ, Hibernate, JPA
+- **Otros**: IntelliJ, Hibernate, JPA, flyway, Spring Security, Java-jwt
 
 ---
 
