@@ -5,10 +5,10 @@ Este proyecto es un desafío que forma parte del programa **Oracle Next Educatio
 
 ## 🛠️ Tecnologías utilizadas
 - **Lenguaje**: Java ☕
-- **Framework**: Spring Framework 🌱
+- **Framework**: Spring Framework, Maven 🌱
 - **Base de datos**: PostgreSQL 🐘
-- **Autenticación**: JWToken, Bearer Key 🔑
-- **Otros**: IntelliJ IDEA 💻
+- **Autenticación**: JWToken, Bearer Key (Stateless) 🔑
+- **Otros**: IntelliJ, Hibernate, JPA
 
 ---
 
